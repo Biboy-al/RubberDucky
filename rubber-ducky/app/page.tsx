@@ -1,3 +1,4 @@
+import SelectMenu from "@/components/select-menu"
 import { VideoRecorder} from "@/components/video-recorder"
 
 export default function Home() {
@@ -22,6 +23,10 @@ export default function Home() {
               language, and communication skills
             </p>
           </div>
+          <div className="text-2xl mb-4 text-white items-center justify-center flex gap-4">
+              <SelectMenu items={["5 year old", "High School student", "Univeristy Student", "Domain Expert"]} />
+            
+            </div>
           <VideoRecorder/>
         </div>
       </main>
