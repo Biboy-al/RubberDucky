@@ -14,12 +14,13 @@ They say you truely knowing somthing if you can explain it to someone. Introduci
 ### Functional Requirements
 | ID  | Requirement |
 |-----|-------------|
-| F1  | The system must allow users to record their spoken explanation of a topic. |
-| F2  | The system must transcribe the recorded audio into text. |
-| F3  | The system must analyze the transcription to determine if the explanation is understood. |
-| F4  | The system must display a dropdown menu for selecting the expertise level of the topic (e.g., beginner, intermediate, expert). |
-| F5  | The system must adjust its understanding feedback based on the selected expertise level. |
-| F6  | The system must provide feedback to the user indicating whether it understood the explanation. |
+| F1  | The system must have a frontend for the user to interact with. |
+| F2  | The system must allow users to record their spoken explanation of a topic. |
+| F3  | The system must transcribe the recorded audio into text. |
+| F4  | The system must analyze the transcription to determine if the explanation is understood. |
+| F5  | The system must display a dropdown menu for selecting the expertise level of the topic (e.g., beginner, intermediate, expert). |
+| F6  | The system must adjust its understanding feedback based on the selected expertise level. |
+| F7  | The system must provide feedback to the user indicating whether it understood the explanation. |
 
 ### Non-Functional Requirements 
 
