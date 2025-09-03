@@ -16,14 +16,18 @@ import { z } from "zod";
 import {Form, FormField, FormItem, FormLabel, FormControl, FormMessage} from "./ui/form"
 import { Button } from "./ui/button";
 
+export const fromSchema = z.object({
+    expertiseLevel: z.string(),
+    context: z.string().optional()
+});
+
+export const onSubmit = (data: z.infer<typeof fromSchema>) => {
+    console.log(data);
+ }
+
 export default function  SelectMenu({items}: {items: string[]}) {
 
     const [formData, setFormData] = useState<{expertiseLevel: string, context?: string}>({expertiseLevel: "", context: ""});
-
-    const fromSchema = z.object({
-        expertiseLevel: z.string(),
-        context: z.string().optional()
-    });
 
     const form = useForm<z.infer<typeof fromSchema>>({
         defaultValues: {
@@ -32,9 +36,6 @@ export default function  SelectMenu({items}: {items: string[]}) {
         }
     });
 
-    const onSubmit = (data: z.infer<typeof fromSchema> ) => {
-        console.log(data);
-    }
 
 
     return(
@@ -79,17 +80,12 @@ export default function  SelectMenu({items}: {items: string[]}) {
                                 <FormMessage />
                             </FormItem>
                         )}
-                    
                     />
-                    <Button type="submit">Submit</Button>
+                    <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 rounded-lg shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition duration-300">
+                        Start Recording
+                    </Button>
                 </form>
             </Form>
-
-{/* 
-            {p != items[0] &&
-                <Textarea placeholder="Or enter a custom expertise level" className="w-128 mt-2" />
-            } */}
-            
         </div>
 
         </>

@@ -1,7 +1,19 @@
+"use client"
+
 import SelectMenu from "@/components/select-menu"
+import { Button } from "@/components/ui/button"
 import { VideoRecorder} from "@/components/video-recorder"
+import { useCallback } from "react"
+import {fromSchema, onSubmit} from "@/components/select-menu"
+import { z } from "zod"
+import Recorder from "@/components/recorder"
+
 
 export default function Home() {
+
+  const handleSubmit = useCallback((data: z.infer<typeof fromSchema>) => {
+    console.log(data)
+  }, []);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
       <main className="flex items-center justify-center p-4 relative overflow-hidden min-h-[calc(100vh-4rem)]">
@@ -24,10 +36,15 @@ export default function Home() {
             </p>
           </div>
           <div className="text-2xl mb-4 text-white items-center justify-center flex gap-4">
-              <SelectMenu items={["5 year old", "High School student", "Univeristy Student", "Domain Expert"]} />
+              <SelectMenu items={["5 year old", "High School student", "Univeristy Student", "Domain Expert"]}/>
             
             </div>
-          <VideoRecorder/>
+
+            <Recorder/>
+          {/* <VideoRecorder/> */}
+          {/* <button onClick={() => {onSubmit}} className="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 rounded-lg shadow-lg shadow-blue-500/20 hover:shadow-blue-500/30 transition duration-300">
+            Start Recording
+          </button> */}
         </div>
       </main>
     </div>
