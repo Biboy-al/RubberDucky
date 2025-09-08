@@ -2,13 +2,20 @@
 
 import { Speech } from "lucide-react";
 import { Button } from "./ui/button";
-import { ReactMediaRecorder } from "react-media-recorder";
+// import { ReactMediaRecorder } from "react-media-recorder";
 import Transcribe from "@/lib/transcript";
+import dynamic from "next/dynamic";
+
+// My fix - prevents SSR issues:
+const ReactMediaRecorder = dynamic(
+    () => import("react-media-recorder").then((mod) => ({ default: mod.ReactMediaRecorder })),
+    { ssr: false }
+);
 
 
 export default function Recorder() {
 
-    const {uploadAudio} = Transcribe();
+    const {transcribeAudio} = Transcribe();
     
     const SpeechRecogniton = (window as any).webkitSpeechRecognition;
     const recognition = new SpeechRecogniton();
@@ -31,7 +38,7 @@ export default function Recorder() {
                         <Button onClick={stopRecording}>Stop Recording</Button>
                         <Button onClick={() => {
                             if (mediaBlobUrl) {
-                                uploadAudio(mediaBlobUrl, "https://api.gladia.io/v2/upload");
+                                transcribeAudio(mediaBlobUrl);
                             } else {
                                 console.error("mediaBlobUrl is undefined");
                             }
