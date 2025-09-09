@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { getAiResponse } from "./ai";
 
 async function urlToBlob(url: string): Promise<Blob> {
     const response = await fetch(url);
@@ -44,7 +45,9 @@ export default function Transcribe() {
             
             setScript(transcriptText);
             setStatus("Transcription completed!");
-            console.log('Final transcript:', transcriptText);
+            // console.log('Final transcript:', transcriptText);
+
+            getAiResponse(transcriptText);
 
         } catch (error) {
             console.error('Transcription failed:', error);
@@ -52,6 +55,8 @@ export default function Transcribe() {
         } finally {
             setIsLoading(false);
         }
+
+        return 
     }
 
     const uploadAudio = async (blobUrl: string, endpoint: string) => {
